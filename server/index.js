@@ -1,30 +1,39 @@
 const express = require("express");
-const app = express();
 const dotenv = require("dotenv").config();
-const port = process.env.PORT;
-var cors = require("cors");
+const cors = require("cors");
 const cookieParser = require("cookie-parser");
+
+
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const sheetsRoutes = require("./routes/sheetsRoutes");
-const columnRoutes = require("./routes/columnRoutes");
 
+const {protect} = require('./middleware/authMiddleware')
+
+const app = express();
+const port = process.env.PORT || 5000;
+
+// Connect to MongoDB
 connectDB();
 
+// Middleware
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000"], // Adjust based on frontend URL
     credentials: true,
   })
 );
-
 app.use(express.json());
 app.use(cookieParser());
 
+// Routes
 app.use("/api", userRoutes);
 app.use("/api/sheets", sheetsRoutes);
-app.use("/api/columns", columnRoutes);
 
+
+
+
+// Start server
 app.listen(port, () => {
-  console.log(`server started at ${port}`);
+  console.log(`🚀 Server started on port ${port}`);
 });
