@@ -19,7 +19,7 @@ connectDB();
 // Middleware
 app.use(
   cors({
-    origin: ["http://localhost:3000"], // Adjust based on frontend URL
+    origin: ["http://localhost:3000", "https://sheetsdash.vercel.app"], // Adjust based on frontend URL
     credentials: true,
   })
 );

@@ -12,7 +12,7 @@ const generateToken = (res, userId) => {
   res.cookie("jwt", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production", // Use secure cookies in production
-    sameSite: "Strict",
+    sameSite: "none",
     maxAge: 30 * 60 * 1000, // 30 minutes in milliseconds
   });
 };
@@ -83,25 +83,8 @@ const loginUser = async (req,res) => {
 }
 
 
-// @desc logout the user
-// @route POST /api/logout
-// access private(only loggedin user)
 
-const logoutUser = async (req, res) => {
-  try {
-    res.cookie("jwt", "", {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Use secure cookies in production
-      sameSite: "Strict",
-      expires: new Date(0), // Expire immediately
-    });
 
-    return res.status(200).json({ message: "Logged out successfully" });
-  } catch (error) {
-    console.error("Logout error:", error);
-    return res.status(500).json({ message: "Logout failed. Try again." });
-  }
-};
 
 
 
@@ -123,6 +106,6 @@ const checkSession = async (req,res) => {
 module.exports = {
     registerUser,
     loginUser,
-    logoutUser,
+   
     checkSession
 }
