@@ -3,7 +3,7 @@ import axios from "axios";
 const API = axios.create({
   
 
-  baseURL: "http://localhost:6771/api", // for development
+  baseURL: "https://sheetsdash-backend.onrender.com/api", // for development
 
   withCredentials: true,
 });
