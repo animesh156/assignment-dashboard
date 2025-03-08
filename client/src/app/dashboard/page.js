@@ -52,7 +52,7 @@ export default function Dashboard() {
     return () => clearInterval(interval);
   }, [router]);
 
-  // 🚨 Prevent Dashboard from rendering when unauthorized 🚨
+  // 🚨 Prevent Dashboard from rendering when user is unauthorized 
   if (checkingAuth || isAuthenticated === false) {
     return (
       <>

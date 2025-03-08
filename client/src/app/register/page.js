@@ -48,11 +48,11 @@ export default function Register() {
   return (
     <div
       className="h-screen flex justify-center items-center bg-cover bg-center"
-      style={{ backgroundImage: "url(./bg.jpg)" }}
+      style={{ backgroundImage: `url("https://res.cloudinary.com/dmdlgpurh/image/upload/v1741415613/bg_1_psbhmx.jpg")` }}
     >
       <ToastContainer />
-      <div className="backdrop-blur-lg bg-white/30 dark:bg-gray-800/30 border border-white/20 dark:border-gray-600/20 shadow-lg rounded-lg p-8 w-96">
-        <h1 className="text-center text-2xl mb-3 font-bold dark:text-white">
+      <div className="backdrop-blur-lg  bg-white/30  border  border-gray-600/20 shadow-lg rounded-lg p-8 w-80 md:w-96">
+        <h1 className="text-center text-2xl mb-3 font-bold ">
           Register
         </h1>
 
@@ -63,7 +63,7 @@ export default function Register() {
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="required py-2 w-full px-3 bg-transparent dark:text-white border-gray-300 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="required py-2 w-full px-3 bg-transparent  border-gray-400 focus:border-gray-300 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -73,7 +73,7 @@ export default function Register() {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="required py-2 w-full px-3 bg-transparent dark:text-white border-gray-300 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="required py-2 w-full px-3 bg-transparent  border-gray-400 focus:border-gray-300 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -83,7 +83,7 @@ export default function Register() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="required py-2 w-full px-3 bg-transparent dark:text-white border-gray-300 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="required py-2 w-full px-3 bg-transparent  border-gray-400 focus:border-gray-300 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -101,7 +101,7 @@ export default function Register() {
               Already have an account?{" "}
               <button
                 onClick={() => router.push("/login")}
-                className="text-blue-400 cursor-pointer hover:underline"
+                className="text-red-500 hover:text-red-600 cursor-pointer hover:underline"
               >
                 Sign In
               </button>

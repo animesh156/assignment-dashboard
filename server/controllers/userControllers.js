@@ -60,36 +60,32 @@ const registerUser = async (req, res) => {
   }
 };
 
-
 // @desc Login the exisiting user
 // @route POST /api/login
 // @access Public
 
-const loginUser = async (req,res) => {
-    const {email, password} = req.body
-    const user = await User.findOne({email})
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
 
-    if(user && (await bcrypt.compare(password,user.password))) {
-        generateToken(res,user._id)
-        res.json({
-            id: user._id,
-            name: user.name,
-            email: user.email,  
-        })
-    }
-    else {
-        return res.status(400).json({error: "Invalid credentials"}) 
-    }
-}
+  if (user && (await bcrypt.compare(password, user.password))) {
+    generateToken(res, user._id);
+    res.json({
+      id: user._id,
+      name: user.name,
+      email: user.email,
+    });
+  } else {
+    return res.status(400).json({ error: "Invalid credentials" });
+  }
+};
 
+// @desc Check the if the user session is expired or not
+// @route GET /api/check
+// @access Private(only authorized user)
 
-
-
-
-
-
-const checkSession = async (req,res) => {
-  const token = req.cookies.jwt
+const checkSession = async (req, res) => {
+  const token = req.cookies.jwt;
 
   if (!token) {
     return res.status(401).json({ message: "Session expired" });
@@ -101,11 +97,10 @@ const checkSession = async (req,res) => {
   } catch (error) {
     return res.status(401).json({ message: "Session expired" });
   }
-}
+};
 
 module.exports = {
-    registerUser,
-    loginUser,
-   
-    checkSession
-}
+  registerUser,
+  loginUser,
+  checkSession,
+};

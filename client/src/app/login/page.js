@@ -36,7 +36,7 @@ export default function Login() {
       localStorage.setItem("userName", loginResponse.data.name);
 
       setTimeout(() => {
-        router.push("/dashboard"); // ✅ Corrected navigation
+        router.push("/dashboard"); 
       }, 2000);
 
     } catch (err) {
@@ -51,13 +51,14 @@ export default function Login() {
   if (!mounted) return null; 
 
   return (
-    <div 
-      className="h-screen flex justify-center items-center bg-cover bg-center"
-      style={{ backgroundImage: "url(./bg.jpg)" }}
-    >
+    <div
+    className="h-screen flex justify-center items-center bg-cover bg-center"
+    style={{ backgroundImage: `url("https://res.cloudinary.com/dmdlgpurh/image/upload/v1741415613/bg_1_psbhmx.jpg")` }}
+  >
+  
       <ToastContainer />
-      <div className="backdrop-blur-lg bg-white/30 dark:bg-gray-800/30 border border-white/20 dark:border-gray-600/20 shadow-lg rounded-lg p-8 w-96">
-        <h1 className="text-center text-2xl mb-3 font-bold dark:text-white">Login</h1>
+      <div className="backdrop-blur-lg  bg-white/30  border  border-gray-600/20 shadow-lg rounded-lg p-8 w-80 md:w-96">
+        <h1 className="text-center text-2xl mb-3 font-bold ">Login</h1>
 
         <form onSubmit={handleSubmit} className="space-y-8">
           <div>
@@ -66,7 +67,7 @@ export default function Login() {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="required py-2 w-full px-3 bg-transparent dark:text-white border-gray-300 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="required py-2 w-full px-3 bg-transparent  border-gray-400 focus:border-gray-300 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -76,7 +77,7 @@ export default function Login() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="required py-2 w-full px-3 bg-transparent dark:text-white border-gray-300 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="required py-2 w-full px-3 bg-transparent  border-gray-400 focus:border-gray-300 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -90,11 +91,11 @@ export default function Login() {
           </div>
 
           <div>
-            <p className="text-center dark:text-white">
+            <p className="text-center ">
               Don&apos;t have an account?{" "}
               <button 
-                className="text-sky-400 cursor-pointer hover:text-sky-600"
-                onClick={() => router.push('/register')} // ✅ Correct navigation
+                className="text-red-500 cursor-pointer hover:text-red-700"
+                onClick={() => router.push('/register')} 
               >
                 Create account
               </button> 

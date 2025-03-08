@@ -3,12 +3,11 @@ const dotenv = require("dotenv").config();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
-
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const sheetsRoutes = require("./routes/sheetsRoutes");
 
-const {protect} = require('./middleware/authMiddleware')
+const { protect } = require("./middleware/authMiddleware");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -19,7 +18,7 @@ connectDB();
 // Middleware
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://sheetsdash.vercel.app"], // Adjust based on frontend URL
+    origin: ["http://localhost:3000", "https://sheetsdash.vercel.app"],
     credentials: true,
   })
 );
@@ -28,10 +27,7 @@ app.use(cookieParser());
 
 // Routes
 app.use("/api", userRoutes);
-app.use("/api/sheets", sheetsRoutes);
-
-
-
+app.use("/api/sheets",protect, sheetsRoutes);
 
 // Start server
 app.listen(port, () => {
