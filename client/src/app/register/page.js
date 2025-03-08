@@ -100,6 +100,7 @@ export default function Register() {
             <p className="text-center dark:text-white">
               Already have an account?{" "}
               <button
+                type="button"
                 onClick={() => router.push("/login")}
                 className="text-red-500 hover:text-red-600 cursor-pointer hover:underline"
               >
