@@ -1,15 +1,19 @@
-// import Image from "next/image";
-"use client"
-import styles from "./page.module.css";
-import { useRouter } from 'next/navigation';
+"use client";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
-  
 
-  // Redirect to login page when home loads
-  router.push('/login');
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
 
-  return null;
+    if (isAuthenticated === "true") {
+      router.push("/dashboard"); // Redirect the user to dashboard if authenticated
+    } else {
+      router.push("/login"); // Redirect to login if not authenticated
+    }
+  }, [router]); 
 
+  return null; // Prevent rendering anything on the home page
 }
